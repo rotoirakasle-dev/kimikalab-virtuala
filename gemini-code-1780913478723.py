@@ -12,7 +12,7 @@ try:
 except KeyError:
     st.info("Nota técnica: Añade tu GEMINI_API_KEY en los secretos de Streamlit Cloud.")
 
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-pro')
 
 # 3. DISEÑO DEL MENÚ LATERAL
 with st.sidebar:
