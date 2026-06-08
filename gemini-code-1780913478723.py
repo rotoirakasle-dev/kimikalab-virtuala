@@ -9,11 +9,13 @@ st.set_page_config(page_title="KimikaLab Birtuala", page_icon="🧪", layout="wi
 # 2. CONEXIÓN SEGURA A LA API (Usando los Secretos)
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+    for m in genai.list_models():
+    if 'generateContent' in m.supported_generation_methods:
+        print(f"Modelo disponible: {m.name}")
 except KeyError:
     st.info("Nota técnica: Añade tu GEMINI_API_KEY en los secretos de Streamlit Cloud.")
 
-model = genai.GenerativeModel(model_name="gemini-1.5-flash")
-
+model = genai.GenerativeModel("gemini-1.5-flash-latest")
 # 3. DISEÑO DEL MENÚ LATERAL
 with st.sidebar:
     st.title("🧪 KimikaLab")
